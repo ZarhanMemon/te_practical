@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* General */
 body {
     background-color: #f5f7fa;
@@ -93,4 +94,101 @@ table {
         padding: 20px !important;
     }
 
+=======
+/* General */
+body {
+    background-color: #f5f7fa;
+    font-family: Arial, sans-serif;
+}
+
+
+/* Sidebar */
+.sidebar {
+    min-height: 100vh;
+    background-color: #ffffff;
+    padding: 25px 15px;
+    border-right: 1px solid #ddd;
+}
+
+.sidebar h5 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.sidebar a {
+    display: block;
+    text-decoration: none;
+    color: #555;
+    padding: 12px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+}
+
+.sidebar a:hover {
+    background-color: #0d6efd;
+    color: white;
+}
+
+
+/* Dashboard Cards */
+.dashboard-card {
+    border: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-card:hover {
+    box-shadow: 10px 10px 18px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Product Cards */
+.product-card {
+    height: 100%;
+    border: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.product-image {
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 70px;
+
+    background-color: #eaf2ff;
+}
+
+
+/* Sections */
+section {
+    scroll-margin-top: 80px;
+}
+
+
+/* Table */
+table {
+    background-color: white;
+}
+
+
+/* Mobile */
+@media (max-width: 767px) {
+
+    .sidebar {
+        min-height: auto;
+        border-right: none;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .sidebar a {
+        display: inline-block;
+        margin-right: 5px;
+    }
+
+    main {
+        padding: 20px !important;
+    }
+
+>>>>>>> 342d53ecb31d87dca92dac8dfb23d5ba1a4ee660
 }

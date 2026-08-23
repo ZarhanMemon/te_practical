@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!-- 2: JavaScript, JSON and REST APIs – CO2
 Develop a student registration portal using JavaScript ES6+, JSON, Local Storage, and Form Validation. 
 Consume a public REST API using Fetch API/AJAX and display data dynamically. -->
@@ -259,4 +260,267 @@ Consume a public REST API using Fetch API/AJAX and display data dynamically. -->
 
 </body>
 
+=======
+<!-- 2: JavaScript, JSON and REST APIs – CO2
+Develop a student registration portal using JavaScript ES6+, JSON, Local Storage, and Form Validation. 
+Consume a public REST API using Fetch API/AJAX and display data dynamically. -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration Portal</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        main {
+            place-items: center;
+        }
+
+        .form {
+            margin-bottom: 20px;
+            padding: 10px;
+            background-color: rgb(232, 192, 215);
+        }
+
+        input,
+        button {
+            padding: 8px;
+            margin: 5px;
+        }
+
+        .btn_grp {
+            margin-left: 30%;
+            display: flex;
+            gap: 10px;
+            justify-content: flex-start;
+        }
+
+        button {
+            padding: 8px 16px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .btn-delete {
+            background-color: #ff4d4d;
+            color: white;
+            border: none;
+            padding: 4px 8px;
+            margin: 0;
+            font-size: 0.85em;
+        }
+
+        .btn-delete:hover {
+            background-color: #cc0000;
+        }
+
+        .error {
+            color: red;
+            font-size: 0.9em;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        th,
+        td {
+            border: 1px solid #141313;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #ab5f5f;
+        }
+    </style>
+</head>
+
+<body>
+
+    <main>
+
+        <!-- Registration Form -->
+        <div class="form">
+            <h1>Student Registration Form</h1>
+
+            <form id="studentForm">
+                <label for="name">Enter your name :</label>
+                <input type="text" id="name" placeholder="Full Name" required><br><br>
+
+                <label for="email">Enter your email :</label>
+                <input type="email" id="email" placeholder="Email" required><br><br>
+
+                <label for="age">Enter your age :</label>
+                <input type="number" id="age" placeholder="Age" required><br><br>
+
+                <div class="btn_grp">
+                    <button type="submit">Register</button>
+                    <button type="reset" id="clearbtn">Clear</button>
+                </div>
+
+                <span id="formErr" class="error"></span>
+            </form>
+        </div>
+
+
+
+        <!-- Registered Students -->
+        <div class="students">
+
+            <h2>Registered Students</h2>
+            <div id="studentList">
+
+                <table id="studentTable">
+                    <thead>
+                        <tr>
+                            <th>No.</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Age</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="studentBody"></tbody>
+                </table>
+            </div>
+        </div>
+
+
+        <!-- Public Api data -->
+        <div class="apiData">
+            <h2>Public API Data (Jokes)</h2>
+            <div id="Data">Loading  data...</div>
+        </div>
+
+    </main>
+
+    <script>
+
+        // Local Storage Handling
+        const form = document.getElementById('studentForm');
+        const studentTable = document.getElementById('studentTable');
+        const studentBody = document.getElementById('studentBody');
+        const formError = document.getElementById('formErr');
+        const apiDataContainer = document.getElementById('Data');
+
+
+        // Load students from localStorage
+        let students = JSON.parse(localStorage.getItem('students')) || [];
+
+
+        const delete_Student = (e) => {
+
+        }
+
+
+        const renderStudents = () => {
+            // Fix the header structure to use tr and th properly
+            studentBody.innerHTML = ``;
+
+            for (let i = 0; i < students.length; i++) {
+                const std_row = document.createElement('tr');
+
+                std_row.innerHTML = `
+
+                    <td>${i + 1}</td>
+                    <td>${students[i].name}</td>
+                    <td>${students[i].email}</td>
+                    <td>${students[i].age}</td>
+                     <td>
+                        <button class="btn-delete" onclick="deleteStudent(${i})">Delete</button>
+                    </td>
+                    
+
+                `;
+
+                // This line adds the row to your table
+                studentBody.appendChild(std_row);
+
+            }
+        }
+
+        // NEW: Function to handle student deletion
+        const deleteStudent = (index) => {
+            // Remove 1 element at the specific index position
+            students.splice(index, 1);
+
+            // Save the newly updated array back to local storage
+            localStorage.setItem('students', JSON.stringify(students));
+
+            // Re-draw the table visually
+            renderStudents();
+        };
+
+
+
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const age = document.getElementById('age').value.trim();
+
+            // Validation
+            if (!name || !email || !age) {
+                formError.textContent = 'All fields are required!';
+                return;
+            }
+            if (age < 5 || age > 100) {
+                formError.textContent = 'Age must be between 5 and 100.';
+                return;
+            }
+            formError.textContent = '';
+
+            students.push({ name, email, age });
+
+            // Persists student records reliably to storage keys
+            localStorage.setItem('students', JSON.stringify(students));
+
+            renderStudents()
+            form.reset();
+        });
+
+
+        // REST API Integration: Fetch Jokes
+        const fetch_data = () => {
+            const url = 'https://official-joke-api.appspot.com/jokes/programming/ten';
+
+            fetch(url, {
+                method: 'GET',
+                headers: { 'Accept': 'application/json' }
+            })
+                .then(response => response.json())
+                .then(data => {
+                    apiDataContainer.innerHTML = '<ul>' + data.map(joke =>
+                        `<br> <li>${joke.setup} <br><em>${joke.punchline}</em></li>`
+                    ).join('') + '</ul>';
+                })
+                .catch(err => {
+                    console.error(err);
+                    apiDataContainer.innerHTML = '<span class="error">Failed to fetch jokes.</span>';
+                });
+        };
+
+
+
+
+        renderStudents()
+        fetch_data()
+
+
+    </script>
+
+</body>
+
+>>>>>>> 342d53ecb31d87dca92dac8dfb23d5ba1a4ee660
 </html>
