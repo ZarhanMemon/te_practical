@@ -1,0 +1,4 @@
+3: 
+Thread synchronization (CO3) 
+Thread synchronization using counting semaphores and mutual exclusion using mutex.
+ Application to demonstrate: producer-consumer problem with counting semaphores and mutex. 
