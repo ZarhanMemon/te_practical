@@ -105,13 +105,13 @@ int main(){
 
 
 
-//RUN :
-// gcc rw.c -o rw -pthread
-// ./rw
+RUN :
+gcc rw.c -o rw -pthread
+./rw
 
 
-// Reader 1 reads data = 0
-// Reader 2 reads data = 0
-// Reader 3 reads data = 0
-// Writer 1 writes data = 1
-// Writer 2 writes data = 2
+Reader 1 reads data = 0
+Reader 2 reads data = 0
+Reader 3 reads data = 0
+Writer 1 writes data = 1
+Writer 2 writes data = 2

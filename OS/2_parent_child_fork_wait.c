@@ -1,12 +1,9 @@
-Zarhan Memon
-OS – Experiment 2
-ITSA15
-
-Code:-
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include <sys/wait.h>
+
+
 
 
 void bubblesort( int a[] , int n){
@@ -92,7 +89,11 @@ int child_parent_sort(){
     
 }
 
+
+
 //=========================================================
+
+
 
 // 2.  Zombie Process :-  Child process finishes ;
 //                        Parent sleeps(10) till child ended ;
@@ -128,7 +129,10 @@ int zombie_process(){
     
 }
 
+
+
 //=========================================================
+
 
 // 3.  Orphan Process :-  Parent process finished or exit(0) ;
 //                        Before child process finishes ;
@@ -161,7 +165,11 @@ int orphan_process(){
     return 0;
 }
 
+
+
 //---------------------------------------------------------
+
+
 
 int main(){
 
@@ -176,34 +184,3 @@ int main(){
 
     return 0;
 }
-
-
-Output:-
-Enter the number of elements: 4
-Enter the elements: 3 2 4 1
-I am Child id : 4919 
-my Parent id : 4915 
-Child process Sorted: 1 2 3 4 
-I amChild id : 4920 
-my Parent id : 4919 
-Child process ended 
-
-I am Parent id : 4919 
-my Child id : 4920 
-Parent process ended 
-I am Parent id : 4919 
-Parent process ended 
-I am Parent id : 4915 
-my Child process id : 4919 
-Parent process Sorted: 1 2 3 4 
-I amChild id : 4922 
-my Parent id : 4915 
-Child process ended 
-
-I am Child id : 4921 
-my NEW Parent id : 1 
-I am Parent id : 4915 
-my Child id : 4922 
-Parent process ended 
-I am Parent id : 4915 
-Parent process ended 

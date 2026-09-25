@@ -80,28 +80,28 @@ int main(){
 }
 
 
-// Compile-Run:
-// gcc producer_consumer.c -o pc -pthread
-// ./pc
+Compile-Run:
+gcc producer_consumer.c -o pc -pthread
+./pc
 
-// Produced : 1 
-// Produced : 2 
-// Produced : 3 
-// Produced : 4 
-// Produced : 5 
-// Consumed: 1 
-// Consumed: 2 
-// Consumed: 3 
-// Consumed: 4 
-// Consumed: 5 
-// Produced : 6 
-// Produced : 7 
-// Produced : 8 
-// Produced : 9 
-// Produced : 10 
-// Consumed: 6 
-// Consumed: 7 
-// Consumed: 8 
-// Consumed: 9 
-// Consumed: 10 
+Produced : 1 
+Produced : 2 
+Produced : 3 
+Produced : 4 
+Produced : 5 
+Consumed: 1 
+Consumed: 2 
+Consumed: 3 
+Consumed: 4 
+Consumed: 5 
+Produced : 6 
+Produced : 7 
+Produced : 8 
+Produced : 9 
+Produced : 10 
+Consumed: 6 
+Consumed: 7 
+Consumed: 8 
+Consumed: 9 
+Consumed: 10 
 
